@@ -9,16 +9,16 @@ module.exports = function(grunt) {
                 }
             }
         },
-        'gh-pages': {
-            options: {
-                clone: 'bower_components/voice-elements'
-            },
-            src: [
-                'bower_components/**/*',
-                '!bower_components/voice-elements/**/*',
-                'demo/*', 'src/*', 'index.html'
-            ]
-        },
+        // 'gh-pages': {
+        //     options: {
+        //         clone: 'bower_components/voice-elements'
+        //     },
+        //     src: [
+        //         'bower_components/**/*',
+        //         '!bower_components/voice-elements/**/*',
+        //         'demo/*', 'src/*', 'index.html'
+        //     ]
+        // },
         'replace': {
             example: {
                 src: ['src/*'],
@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-text-replace');
 
     grunt.registerTask('build',  ['replace']);
-    grunt.registerTask('deploy', ['gh-pages']);
+    // grunt.registerTask('deploy', ['gh-pages']);
     grunt.registerTask('server', ['connect']);
 
 };
