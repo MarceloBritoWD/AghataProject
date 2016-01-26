@@ -5,7 +5,10 @@ module.exports = function(grunt) {
             demo: {
                 options: {
                     open: true,
-                    keepalive: true
+                    keepalive: true,
+                    protocol: 'https',
+                    hostname: '*',
+                    base: '.',
                 }
             }
         },
