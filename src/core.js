@@ -27,12 +27,12 @@ function falaLimpaEscreve() {
   var chat = document.querySelector('.chat')
   chat.appendChild(document.createTextNode('- ' + resposta));
   chat.appendChild(document.createElement('br'));
+
 }
 
 
 // Resetava o que havia sido imprmido na tela anteriormente
 // input.textContent = '';
-
 
 
 cont = 0
@@ -51,13 +51,21 @@ window.addEventListener('WebComponentsReady', function(e) {
   });
 
 
-  element.addEventListener('result', function(e) {  
+
+  element.addEventListener('result', function(e) {
+    console.log(e.detail.results)
+
+    if(e.detail.results.length == 1) {cont = 0} //importantisiimo, pois, caso o SpeechRecognitionResultList reset, o contador tambem tem que resetar.
+
     console.log(e.detail.results[cont][0])
     input.textContent = e.detail.results[cont][0].transcript; //com este script ela fica lendo repetidamente apenas o primeiro texto recebido (falado)
+    
     input.textContent = input.textContent.toLowerCase() //deixa minusculo
 
 
     cont++
+
+
 
 
     // isto limpa os espaço no inicio da frase (atrelar a uma funçao)
@@ -88,6 +96,15 @@ window.addEventListener('WebComponentsReady', function(e) {
        resposta = 'Sir, its ' + hora + ' Hours and ' + min + ' minutes';
 
        falaLimpaEscreve();
+    }
+
+
+    else if (input.textContent == 'acorda criança') {
+      janela = window.open('https://www.youtube.com/watch?v=LoF_a0-7xVQ', '_blank');
+      janela.blur();
+
+      resposta = 'Welcome sir, how are you doing?';
+      falaLimpaEscreve();
     }
 
     // else if (input.textContent == 'salve na agenda') {
