@@ -53,13 +53,10 @@ window.addEventListener('WebComponentsReady', function(e) {
 
 
   element.addEventListener('result', function(e) {
-    console.log(e.detail.results)
-
-    if(e.detail.results.length == 1) {cont = 0} //importantisiimo, pois, caso o SpeechRecognitionResultList reset, o contador tambem tem que resetar.
-
+    // console.log(e.detail.results)
+    if(e.detail.results.length == 1) {cont = 0} //importante, pois, caso o SpeechRecognitionResultList reset, o contador tambem tem que resetar.
     console.log(e.detail.results[cont][0])
     input.textContent = e.detail.results[cont][0].transcript; //com este script ela fica lendo repetidamente apenas o primeiro texto recebido (falado)
-    
     input.textContent = input.textContent.toLowerCase() //deixa minusculo
 
 
@@ -104,6 +101,14 @@ window.addEventListener('WebComponentsReady', function(e) {
       janela.blur();
 
       resposta = 'Welcome sir, how are you doing?';
+      falaLimpaEscreve();
+    }
+
+    else if (input.textContent == 'abra um espelho') {
+      janela = window.open('https://0.0.0.0:8000/espelho.html', '_blank');
+      janela.blur();
+
+      resposta = 'You are great sir';
       falaLimpaEscreve();
     }
 
